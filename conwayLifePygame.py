@@ -1,6 +1,6 @@
+import pygame
 import random
 import time
-import os
 
 # La taille de la grille
 grid_size = 30
@@ -10,6 +10,13 @@ init_proba = 0.2
 
 # Le nombre d'itérations pour exécuter la simulation
 num_iterations = 100
+
+# La taille de chaque cellule en pixels
+cell_size = 20
+
+# La couleur de la cellule vivante
+alive_color = (255, 255, 255)
+dead_color = (0, 0, 0)
 
 def create_grid():
     """Crée une grille vide de la taille spécifiée."""
@@ -21,18 +28,6 @@ def initialize_grid(grid):
         for j in range(grid_size):
             if random.random() < init_proba:
                 grid[i][j] = 1
-
-def display_grid(grid):
-    """Affiche l'état actuel de la grille sur la console."""
-    os.system('clear') # Efface la console
-    for i in range(grid_size):
-        for j in range(grid_size):
-            if grid[i][j] == 1:
-                print('X', end=' ')
-            else:
-                print('.', end=' ')
-        print('')
-    print('')
 
 def count_neighbors(grid, x, y):
     """Comptez le nombre de voisins vivants autour d'une cellule."""
@@ -65,15 +60,33 @@ def update_grid(grid):
                     new_grid[i][j] = 1
     return new_grid
 
+def draw_grid(screen, grid):
+    """Dessinez l'état actuel de la grille sur l'écran."""
+    for i in range(grid_size):
+        for j in range(grid_size):
+            if grid[i][j] == 1:
+                color = alive_color
+            else:
+                color = dead_color
+            rect = pygame.Rect(j * cell_size, i * cell_size, cell_size, cell_size)
+            pygame.draw.rect(screen, color, rect)
+
 def run_simulation():
     """Exécutez la simulation pour le nombre d'itérations spécifié."""
+    pygame.init()
+    screen = pygame.display.set_mode((grid_size * cell_size, cell_size * cell_size))
     grid = create_grid()
     initialize_grid(grid)
-    display_grid(grid)
     for i in range(num_iterations):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+        draw_grid(screen, grid)
+        pygame.display.update()
         grid = update_grid(grid)
-        display_grid(grid)
         time.sleep(0.1)
+    pygame.quit()
 
 if __name__ == '__main__':
     run_simulation()
