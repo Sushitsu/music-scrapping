@@ -81,6 +81,7 @@ def format_music(music_items):
     music_data = []
     for instrument in music_items:
         if instrument:
+            sushi
             instrument_dict = {
                 'Image Link': instrument.get_img(),
                 'Brand Image Link': instrument.get_brand(),
