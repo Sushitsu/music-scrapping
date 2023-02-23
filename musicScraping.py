@@ -2,7 +2,7 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
-
+import lxml
 from MusicItem import MusicItem
 
 baseUrl = 'https://www.music3000.fr'
