@@ -2,7 +2,6 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
-import lxml
 from MusicItem import MusicItem
 
 baseUrl = 'https://www.music3000.fr'
@@ -34,6 +33,16 @@ def get_links_from_cards(cards):
     return links
 
 
+# Récupérer l'id
+def get_id(soup):
+    input_elem = soup.find("input", class_="js-product-miniature item_in")
+    if input_elem is not None:
+        ID = input_elem.get("value")
+        return ID
+    else:
+        return None
+
+
 # Récupérer le lien de l'img
 def get_img(soup):
     img_href = soup.find("img", class_="js-qv-product-cover")["src"]
@@ -59,21 +68,24 @@ def get_price(soup):
 
 
 # Récupérer le description
-def get_description(soup):
-    description = soup.find("div", class_="product-desc").text
+def get_description(soup, description=None):
+    description_elem = soup.find("div", class_="product-desc")
+    if description_elem is not None:
+        description = description_elem.get_text(strip=True).replace('\n', ' ')
     return description
 
 
 # Récupérer les infos de chaque page
 def get_info_by_page(link):
     soup = swoup(link)
+    ID = get_id(soup)
     img = get_img(soup)
     brand = get_brand(soup)
     model = get_model(soup)
     price = get_price(soup).replace(" ", "")
     description = get_description(soup).replace('\n', ' ').strip()
 
-    return MusicItem(img, brand, model, price, description)
+    return MusicItem(ID, img, brand, model, price, description)
 
 
 # Formater les données
@@ -82,6 +94,7 @@ def format_music(music_items):
     for instrument in music_items:
         if instrument:
             instrument_dict = {
+                'ID': instrument.get_id(),
                 'Image Link': instrument.get_img(),
                 'Brand Image Link': instrument.get_brand(),
                 'Model': instrument.get_model(),
@@ -112,4 +125,21 @@ def main():
     data_frame.to_csv("music_data.csv")
 
 
+# Nettoyer les donnéees
+# Chargement et affichage des données
+data = pd.read_csv("music_data.csv")
+print(data)
+
+# Détection des erreurs
+print(data.isnull().sum())
+
+# Vérifie s'il existe des doublons
+data.loc[data['Model'].duplicated(keep=False), :]
+
+# Supprimer les doublons (dans ce cas la il y en a 50 mais ils correspondent à des modèles différents
+# data.drop_duplicates(subset=['Model'], keep='first', inplace=True)
+# print("Les doublons ont bien été supprimés")
+
+
+# Exécution du programme principals
 main()

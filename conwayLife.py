@@ -11,9 +11,12 @@ init_proba = 0.2
 # Le nombre d'itérations pour exécuter la simulation
 num_iterations = 100
 
+
 def create_grid():
     """Crée une grille vide de la taille spécifiée."""
-    return [[0 for x in range(grid_size)] for y in range(grid_size)]
+    return [[0 for _ in range(grid_size)] for
+            _ in range(grid_size)]
+
 
 def initialize_grid(grid):
     """Initialiser au hasard la grille avec des cellules vivantes."""
@@ -22,9 +25,10 @@ def initialize_grid(grid):
             if random.random() < init_proba:
                 grid[i][j] = 1
 
+
 def display_grid(grid):
     """Affiche l'état actuel de la grille sur la console."""
-    os.system('clear') # Efface la console
+    os.system('clear')  # Efface la console
     for i in range(grid_size):
         for j in range(grid_size):
             if grid[i][j] == 1:
@@ -33,6 +37,7 @@ def display_grid(grid):
                 print('.', end=' ')
         print('')
     print('')
+
 
 def count_neighbors(grid, x, y):
     """Comptez le nombre de voisins vivants autour d'une cellule."""
@@ -48,6 +53,7 @@ def count_neighbors(grid, x, y):
             elif grid[neighbor_x][neighbor_y] == 1:
                 count += 1
     return count
+
 
 def update_grid(grid):
     """Mettez à jour la grille pour une itération de la simulation."""
@@ -65,6 +71,7 @@ def update_grid(grid):
                     new_grid[i][j] = 1
     return new_grid
 
+
 def run_simulation():
     """Exécutez la simulation pour le nombre d'itérations spécifié."""
     grid = create_grid()
@@ -74,6 +81,7 @@ def run_simulation():
         grid = update_grid(grid)
         display_grid(grid)
         time.sleep(0.1)
+
 
 if __name__ == '__main__':
     run_simulation()

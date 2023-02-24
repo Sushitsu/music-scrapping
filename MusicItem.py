@@ -1,11 +1,15 @@
 class MusicItem:
 
-    def __init__(self, img, brand, model, price, description):
+    def __init__(self, id, img, brand, model, price, description):
+        self.id = id
         self.img = img
         self.brand = brand
         self.model = model
         self.price = price
         self.description = description
+
+    def get_id(self):
+        return self.id
 
     def get_img(self):
         return self.img
@@ -22,6 +26,9 @@ class MusicItem:
     def get_description(self):
         return self.description
 
+    def set_id(self, id):
+        self.id = id
+
     def set_img(self, img):
         self.img = img
 
@@ -36,5 +43,3 @@ class MusicItem:
 
     def set_description(self, description):
         self.description = description
-
-
