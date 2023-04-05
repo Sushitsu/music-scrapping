@@ -63,8 +63,10 @@ def get_model(soup):
 
 # Récupérer le prix
 def get_price(soup):
-    price = soup.find("span", class_="price").text
-    return price
+    if price != ("€"):
+        price = soup.find("span", class_="price").text
+    else:
+        return price
 
 
 # Récupérer le description
@@ -78,14 +80,13 @@ def get_description(soup, description=None):
 # Récupérer les infos de chaque page
 def get_info_by_page(link):
     soup = swoup(link)
-    ID = get_id(soup)
     img = get_img(soup)
     brand = get_brand(soup)
     model = get_model(soup)
     price = get_price(soup).replace(" ", "")
     description = get_description(soup).replace('\n', ' ').strip()
 
-    return MusicItem(ID, img, brand, model, price, description)
+    return MusicItem(img, brand, model, price, description)
 
 
 # Formater les données
@@ -94,7 +95,6 @@ def format_music(music_items):
     for instrument in music_items:
         if instrument:
             instrument_dict = {
-                'ID': instrument.get_id(),
                 'Image Link': instrument.get_img(),
                 'Brand Image Link': instrument.get_brand(),
                 'Model': instrument.get_model(),
