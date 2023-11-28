@@ -35,7 +35,7 @@ This project involves web scraping the Music3000 website to gather detailed info
 3. Run the Python script:
 
     ```bash
-    python scrapping_music3000.py
+    python musicScraping.py
     ```
 
 4. Find the generated CSV file with the scraped guitar information.
