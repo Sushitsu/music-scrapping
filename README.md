@@ -56,6 +56,7 @@ This project involves web scraping the Music3000 website to gather detailed info
 ## 🤝 Contributing 
 Contributions and suggestions are welcome ! Feel free to open an issue or submit a pull request to enhance this project.
 
+<br>
 
 ## 🙏 Acknowledgments 
 - Special thanks to [Music3000](https://www.music3000.fr) for providing the guitar information.
