@@ -16,7 +16,7 @@ This project involves web scraping the Music3000 website to gather detailed info
 <br>
 
 ## 💻 Technologies Used 
-- **Python ![Python Logo](https://www.python.org/community/logos/python-logo-master-v3-TM.png) ** : Utilized for web scraping.
+- **Python [![python](https://cdn3.emoji.gg/emojis/1887_python.png)](https://emoji.gg/emoji/1887_python) ** : Utilized for web scraping.
 - **Beautiful Soup 📜** : A Python library for pulling data out of HTML and XML files.
 - **Requests 🌐** : A Python library for making HTTP requests.
 
