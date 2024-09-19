@@ -53,6 +53,11 @@ This project involves web scraping the Music3000 website to gather detailed info
 
 <br>
 
+## :hammer: Tech Used 
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
+<br>
+
 ## 🤝 Contributing 
 Contributions and suggestions are welcome ! Feel free to open an issue or submit a pull request to enhance this project.
 
