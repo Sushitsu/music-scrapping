@@ -16,9 +16,9 @@ This project involves web scraping the Music3000 website to gather detailed info
 <br>
 
 ## 💻 Technologies Used 
-- **Python** : Utilized for web scraping.
-- **Beautiful Soup** : A Python library for pulling data out of HTML and XML files.
-- **Requests** : A Python library for making HTTP requests.
+- **Python** ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) : Utilized for web scraping.
+- **Beautiful Soup 📜** : A Python library for pulling data out of HTML and XML files.
+- **Requests 🌐** : A Python library for making HTTP requests.
 
 <br>
 
@@ -50,11 +50,6 @@ This project involves web scraping the Music3000 website to gather detailed info
     ```
 
 4. Find the generated CSV file with the scraped guitar information.
-
-<br>
-
-## :hammer: Tech Used 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 <br>
 
