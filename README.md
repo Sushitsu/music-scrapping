@@ -5,7 +5,7 @@
 
 <br>
 
-# :zap: Description
+## :zap: Description
 Scrape the website [Music3000](https://www.music3000.fr) to extract and organize guitar information into a properly formatted CSV file.
 
 <br>
